@@ -4,6 +4,7 @@
 read -p "Digite o nome da pasta do projeto: " PROJECT_NAME
 
 # Diretório base para o projeto
+#Aqui change se for necessário
 PROJECT_DIR="/opt/lampp/htdocs/$PROJECT_NAME"
 
 # Verificar se o nome do projeto está vazio
