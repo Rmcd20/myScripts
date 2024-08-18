@@ -1,0 +1,39 @@
+<?php
+
+function main() {
+    // Diretório htdocs do XAMPP
+    $htdocs_dir = '/opt/lampp/htdocs';  // Caminho do htdocs para XAMPP no Linux
+
+    // Solicita o nome do projeto
+    echo "Digite o nome do projeto: ";
+    $projeto = trim(fgets(STDIN));
+
+    // Cria o caminho para o diretório do projeto
+    $projeto_dir = $htdocs_dir . '/' . $projeto;
+
+    // Verifica se o diretório do projeto existe
+    if (!is_dir($projeto_dir)) {
+        echo "O diretório do projeto '{$projeto}' não foi encontrado.\n";
+        return;
+    }
+
+    // Tenta encontrar um arquivo index.html ou index.php no diretório do projeto
+    $index_files = ['index.html', 'index.php'];
+    foreach ($index_files as $file_name) {
+        $file_path = $projeto_dir . '/' . $file_name;
+        if (file_exists($file_path)) {
+            echo "Arquivo '{$file_name}' encontrado. Abrindo no navegador...\n";
+            $url = 'http://localhost/' . $projeto . '/' . $file_name;
+            // Comando para abrir o navegador no Linux
+            exec("xdg-open '$url'");
+            return;
+        }
+    }
+
+    // Se nenhum arquivo index.html ou index.php for encontrado
+    echo "Nenhum arquivo 'index.html' ou 'index.php' encontrado no diretório do projeto.\n";
+}
+
+main();
+
+?>

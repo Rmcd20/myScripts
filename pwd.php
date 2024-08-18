@@ -16,7 +16,7 @@ $password = bin2hex(random_bytes(8));
 $connectPWD = $password . $timeTest;
 
 // Caminho do arquivo onde a senha será salva
-$filePath = 'C:/Program Files/php/scriptsPhp/RandomPWD/Safe.txt';
+$filePath = '/home/rd/Projects/php/safe.txt';
 
 // Verifica se o diretório existe
 if (!file_exists(dirname($filePath))) {
